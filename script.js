@@ -125,12 +125,27 @@ console.log(cardChoosen)
 
     const allCards = document.querySelectorAll('img');
 
-    if(optionOne.name === optionTwo.name){
+    if(optionOne.id === optionTwo.id){
+      //same card selected
+      alert("You have selected the same card")
+
+      allCards[optionOne.id].src = 'images/question-mark.jpg';
+      allCards[optionTwo.id].src = 'images/question-mark.jpg';
+
+    }else if(optionOne.name === optionTwo.name){
       
         allCards[optionOne.id].src = 'images/right.webp';
         allCards[optionTwo.id].src = 'images/right.webp';
 
+
+        //remove the  matched card marks repeat
+
+        allCards[optionOne.id].removeEventListener('click', flipcard);
+        allCards[optionOne.id].removeEventListener('click', flipcard);
+
         marks = marks + 100 / 8;
+
+        
     }else{
 
         allCards[optionOne.id].src = 'images/question-mark.jpg';
